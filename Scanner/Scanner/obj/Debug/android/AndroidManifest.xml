@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="Scanner.Scanner" android:versionCode="1" android:versionName="1.0">
+  <uses-sdk android:targetSdkVersion="19" android:minSdkVersion="8" />
+  <application android:icon="@drawable/icon" android:label="Scanner" android:name="mono.android.app.Application" android:debuggable="true">
+    <activity android:name=".MainActivity" android:label="Scanner" android:launchMode="singleTop">
+      <intent-filter>
+        <action android:name="Scanner.Scanner.RECVR" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="scan" />
+      </intent-filter>
+    </activity>
+    <activity android:alwaysRetainTaskState="true" android:icon="@drawable/icon" android:label="Scanner" android:launchMode="singleTop" android:name="scanner.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="Scanner.Scanner.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.Scanner.Scanner" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+</manifest>
